@@ -3,10 +3,45 @@
     <head>
         <meta charset="UTF-8">
         <title>Ajax example</title>
+        <script language="javascript" type="text/javascript">
+            xmlhttp = new XMLHttpRequest();
+            
+            function getData(){
+                //status 0: hasnt started
+                //status 1: connected to server
+                //status 2: server received request
+                //status 3: server processing
+                //status 4: request finished
+                xmlhttp.onreadystatechange = function(){
+                    if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                        document.getElementById('data').innerHTML = xmlhttp.responseText;
+                    }else{
+                        document.getElementById('data').innerHTML = "<strong> Waiting for server Response </strong>";
+                    }
+                }
+                xmlhttp.open("GET", "data.txt", true);
+                xmlhttp.send();
+            }
+
+            function getJsonData(){
+                xmlhttp.onreadystatechange = function(){
+                    if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+                        document.getElementById('data').innerHTML = xmlhttp.responseText;
+                    }else{
+                        document.getElementById('data').innerHTML = "<strong> Waiting for server Response </strong>";
+                    }
+                }
+                xmlhttp.open("GET", "https://api.github.com", true);
+                xmlhttp.send();
+            }
+        </script>
     </head>
     <body>
-        <div id="scores">
+        <div id="data">
         </div>
-        <input type="button" value="Get Scores!" onclick="getScores()"/>
+        <input type="button" value="Get Data!" onclick="getData()"/>
+        <div id="webpage">
+        </div>
+        <input type="button" value="Get JsonData from Github!" onclick="getJsonData()"/>
     </body>
 </html>

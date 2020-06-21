@@ -1,0 +1,7 @@
+Here is the data that you needed. Ajax allowed the data to be loaded without having to refresh the hole page.
+Ajax helps to develop faster and more interactive web apps, with better performance due to less usage
+of server resources. Resources that can be accessed are usually local, or from the same origin.
+There are tons of web sites with public API that we could access, but most of them use the default CORS security
+setting (by not setting Access-Control-Allow-Origin) which means we can only access their API from the command line
+or from the server and not from the browser.
+One of the few exceptions is the API from github, we can access their data via ajax request (press the other button).
